@@ -16,14 +16,13 @@ video: Chapter 2 - Part 3
  
  1) Write down the names of all of the primitives available in C++ (excluding wchar_t) here: 
  
- 
- 
- 
- 
- 
- 
- 
- 
+ int
+ unsigned int
+ float
+ bool
+ char
+ double
+ void 
  
  
 2) for each primitive type, write out 3 variable declarations inside the variableDeclaration() function on line 59.
@@ -52,14 +51,18 @@ video: Chapter 2 - Part 3
  */
 
 //2)
+
 void variableDeclarations()
 {
-    //example:
-    int number = 2; //declaration of a variable named "number", that uses the primitive type 'int', and the variable's initial value is '2'
+    int i = -9, j = 74, k = 998;
+    unsigned int x = 6, y = 8, z = 10;
+    float f = 5.f, g = 6.f, h = .0f;
+    bool a = true, b = false, c = true;
+    char r = 'p', s = 'f', t = 'm';
+    double l = 3.14, m = 6.28, n = 9.42;
     
-
-    
-    ignoreUnused(number); //passing each variable declared to the ignoreUnused() function
+    //passing each variable declared to the ignoreUnused() function
+    ignoreUnused(i, j, k, x, y, z, f, g, h, a, b, c, r, s, t, l, m, n);
 }
 
 /*
@@ -75,42 +78,89 @@ bool rentACar(int rentalDuration, int carType = 0)  //function declaration with 
 /*
  1)
  */
+void copyNumber(int a, int b)
+{ 
+    ignoreUnused(a, b);
+} 
 
 /*
  2)
  */
+void startPlayback(int position = 0)
+{ 
+    ignoreUnused(position);
+} 
 
 /*
  3)
  */
+bool executePayment(float due, float paid = 0)
+{ 
+    ignoreUnused(due, paid);
+    return {};
+} 
 
 /*
  4)
  */
+bool buyPizza(int slices = 0, int friends = 0, float deliveryTime = 0.f)
+{ 
+    ignoreUnused(slices, friends, deliveryTime);
+    return {};
+} 
 
 /*
  5)
  */
+char passCharThrough(char a = 'a')
+{ 
+    ignoreUnused(a);
+    return {};
+} 
 
 /*
  6)
  */
+bool buyTickets(int eventId, int numTickets = 0, bool discountedPrice = false)
+{ 
+    ignoreUnused(eventId, numTickets, discountedPrice);
+    return {};
+} 
 
 /*
  7)
  */
+int sumIntegers(int a = 0, int b = 0, int c = 0)
+{ 
+    ignoreUnused(a, b, c);
+    return {};
+} 
 
 /*
  8)
  */
+void clickButton(int objectId)
+{ 
+    ignoreUnused(objectId);
+} 
 
 /*
  9)
  */
+void moveFader(int objectId, float startValue, float endValue)
+{ 
+    ignoreUnused(objectId, startValue, endValue);
+} 
 
 /*
  10)
  */
+bool playSample(int sampleId)
+{ 
+    ignoreUnused(sampleId);
+    return {};
+} 
+
 
 /*
  MAKE SURE YOU ARE NOT ON THE MASTER BRANCH
@@ -130,29 +180,38 @@ int main()
 {
     //example of calling that function, storing the value, and passing it to ignoreUnused at the end of main()
     auto carRented = rentACar(6, 2); 
-    
+
     //1)
-    
+    copyNumber(6, 9);
+
     //2)
-    
+    startPlayback(0);
+
     //3)
-    
+    auto paymentSuccessful = executePayment(6.5, 6.5);
+
     //4)
-    
+    auto pizzaBought = buyPizza(8, 2, 19.5);
+
     //5)
-    
+    auto charSupplied = passCharThrough('u');
+
     //6)
-    
+    auto ticketsBought = buyTickets(557, 2);
+
     //7)
-    
+    auto result = sumIntegers(3, 6);
+
     //8)
-    
+    clickButton(883);
+
     //9)
-    
+    moveFader(663, 0.2f, 0.6f);
+
     //10)
+    auto played = playSample(6);
     
-    
-    ignoreUnused(carRented);
+    ignoreUnused(carRented, paymentSuccessful, pizzaBought, charSupplied, ticketsBought, result, played);
     std::cout << "good to go!" << std::endl;
     return 0;    
 }
